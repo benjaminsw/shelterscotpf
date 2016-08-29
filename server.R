@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
   sliderMonth <- reactiveValues()
   observe({
     full.date <- as.POSIXct(input$slider, tz="GMT")
-    query <- as.character(format(full.date, "%Y-%m-%d"))
+    query <- as.character(format(full.date, "%Y-%m-01"))
     #print(query)
     result <- subset(df, df$NA.==query,)
     print(result)
