@@ -1,24 +1,14 @@
-library(shiny)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-  
-  # Application title
-  titlePanel("Hello Shiny!"),
-  
-  # Sidebar with a slider input for the number of bins
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
-    )
+# Define UI for slider demo application
+shinyUI(
+  pageWithSidebar(
+  headerPanel("Shelter Data"),
+  sidebarPanel(
+    sliderInput("slider", "Time", min = as.Date("2015-07-01"),max =as.Date("2016-06-01"),value=as.Date("2015-07-01"),timeFormat="%b %Y", animate=TRUE)
+  ),
+  mainPanel(
+    tableOutput("values")
   )
-))
+  )
+  
+)
