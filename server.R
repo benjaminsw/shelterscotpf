@@ -20,6 +20,6 @@ shinyServer(function(input, output) {
   output$BBplot <- renderPlot({
     ggplot(resultLong, aes(x=variable, y=NA., size = value, fill = value)) + 
       geom_point(shape = 21) + ylab("Year-Month-Date")+xlab("Matrices") +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+      theme(axis.text.x = element_text(angle = 80, hjust = 1))
   },width=2000,height=1000)
 })
