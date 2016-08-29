@@ -17,10 +17,8 @@ shinyServer(function(input, output) {
     resultLong <- melt(result, id.vars = "NA.",value.name = "value")
     print(resultLong)
   })
-  
-  output$SliderText <- renderText({sliderMonth$Month})
   output$BBplot <- renderPlot({
-    d <- data()
-    plot(d$speed, d$dist)
+    ggplot(resultLong, aes(x=variable, y=NA., size = value, fill = value)) + 
+      geom_point(shape = 21)
   })
 })
