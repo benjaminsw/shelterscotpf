@@ -13,10 +13,9 @@ shinyServer(function(input, output) {
     query <- as.character(format(full.date, "%Y-%m-01"))
     #print(query)
     result <- subset(df, df$NA.==query,)
-    print(result)
-    #print(subset(df, df$NA.=="2015-07-01",))
-    #resultLong <- melt(result, id.vars = "NA.",value.name = "value")
-    #print(sliderMonth$Month)
+    #print(result)
+    resultLong <- melt(result, id.vars = "NA.",value.name = "value")
+    print(resultLong)
   })
   
   output$SliderText <- renderText({sliderMonth$Month})
