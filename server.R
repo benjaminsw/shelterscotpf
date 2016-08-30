@@ -19,10 +19,12 @@ shinyServer(function(input, output) {
     print(resultLong)
   })
   output$BBplot <- renderPlot({
-    ggplot(resultLong, aes(x=variable, y=as.character(format(NA., "%Y-%m")), size = value, fill = value)) + 
-      geom_point(shape = 21) + ylab("Year-Month")+xlab("Matrices") +
+    ggplot(resultLong, aes(x=variable, y=value)) + 
+      geom_bar(stat="identity", fill="steelblue") + ylab("Value")+xlab("Matrices") +
+      geom_text(aes(label=value),angle = 90, hjust = 2, color="white", size=12)+
       theme(axis.text.x = element_text(angle = 80, hjust = 1, size=24),
             axis.text.y = element_text(angle = 90, hjust = 1, size=24),
-            axis.title=element_text(size=24,face="bold"))
+            axis.title=element_text(size=24,face="bold")) +
+      theme_minimal()
   },width=4000,height=2000)
 })
