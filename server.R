@@ -13,15 +13,16 @@ shinyServer(function(input, output) {
     query <- as.character(format(full.date, "%Y-%m-01"))
     #print(query)
     result <- subset(df, df$NA.==query,)
+    #result <- subset(df, df$NA.=="2015-07-01",)
     #print(result)
     resultLong <- melt(result, id.vars = "NA.",value.name = "value")
     print(resultLong)
   })
   output$BBplot <- renderPlot({
-    ggplot(resultLong, aes(x=variable, y=NA., size = value, fill = value)) + 
-      geom_point(shape = 21) + ylab("Year-Month-Date")+xlab("Matrices") +
+    ggplot(resultLong, aes(x=variable, y=as.character(format(NA., "%Y-%m")), size = value, fill = value)) + 
+      geom_point(shape = 21) + ylab("Year-Month")+xlab("Matrices") +
       theme(axis.text.x = element_text(angle = 80, hjust = 1, size=24),
-            axis.text.y = element_text(size=24),
+            axis.text.y = element_text(angle = 90, hjust = 1, size=24),
             axis.title=element_text(size=24,face="bold"))
   },width=4000,height=2000)
 })
