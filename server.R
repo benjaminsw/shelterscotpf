@@ -23,7 +23,10 @@ shinyServer(function(input, output) {
             axis.title=element_text(size=24,face="bold"))
     
   },width=4000,height=2000)
-  output$table = renderDataTable({
+  output$table <- renderDataTable({
     df
+  })
+  output$summary <- renderText({
+    "I went to Hackathon on 29 July 2016 to 31 July 2016 at CodeBase which the theme was 'homelessness' and there was data provided by Shelter. As a data lover, I can stopped to dig down and see this data. Here are the example of what I decided to build and make it public. Though, my team did not win but we had fun and know a lot more about housing problem in Scotland and met a lot of amezing people <3"
   })
 })

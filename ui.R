@@ -9,7 +9,7 @@ shinyUI(
     mainPanel(
       tabsetPanel(
         tabPanel("Plot", plotOutput("barPlot",  width = "200%")),
-        tabPanel("Table", tableOutput("table")),
+        tabPanel("Table", dataTableOutput("table")),
         tabPanel("Summary", verbatimTextOutput("summary"))
       )
       
