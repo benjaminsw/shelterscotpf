@@ -6,7 +6,7 @@ df <- read.xlsx("Helpline.xlsx", 2, header = TRUE)
 df[is.na(df)] <- 0
 # Define server logic for slider examples
 shinyServer(function(input, output) {
-  output$BBplot <- renderPlot({
+  output$barPlot <- renderPlot({
       full.date <- as.POSIXct(input$slider, tz="GMT")
       query <- as.character(format(full.date, "%Y-%m-01"))
       #print(query)
@@ -23,4 +23,7 @@ shinyServer(function(input, output) {
             axis.title=element_text(size=24,face="bold"))
     
   },width=4000,height=2000)
+  output$table = renderDataTable({
+    df
+  })
 })
